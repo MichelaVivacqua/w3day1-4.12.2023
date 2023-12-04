@@ -35,7 +35,7 @@
 
   <body>
     <div id="firstdiv">
-      <h1>Questo è il titolo della pagina</h1>
+      <h1 onclick="makeItClickable()">Questo è il titolo della pagina</h1>
       <h2>Questo è il sottotitolo della pagina</h2>
     </div>
 
@@ -72,7 +72,7 @@
 
     <div id="tableArea"></div>
 
-    <footer>
+    <footer onclick="revealFooterLink()">
       <h3>
         DOM Manipulation is super
         <a
@@ -106,10 +106,12 @@
                     */
 
       const changePcontent = function () {
-        document.querySelectorAll("div p");
-        for (let i = 0; i < changePcontent.lenght; i++);
+        const pInsideDivs = document.querySelectorAll("div > p");
+        for (let i = 0; i < pInsideDivs.length; i++) {
+          pInsideDivs[i].innerText = "testo cambiato";
+        }
       };
-
+      changePcontent();
       /* ESERCIZIO 4
                      Scrivi una funzione che cambi la proprietà href di ogni link (tranne quello nel footer) con il valore https://www.google.com
                     */
@@ -126,7 +128,7 @@
 
       const addToTheSecond = function () {
         const newLiElement = document.createElement("li");
-        newLiElement.innertext = "aiuto";
+        newLiElement.innerText = "aiuto";
         const add = document.getElementById("secondList");
         add.appendChild(newLiElement);
       };
@@ -138,7 +140,7 @@
 
       const addParagraph = function () {
         const newParagraph = document.createElement("p");
-        newParagraph.innertext = "lorem ipsum";
+        newParagraph.innerText = "lorem ipsum";
         const add = document.getElementById("firstdiv");
         add.appendChild(newParagraph);
       };
@@ -150,7 +152,7 @@
 
       const hideFirstUl = function () {
         const hidden = document.getElementById("firstList");
-        hidden.classList.toggle("invisible");
+        hidden.style.opacity = 0;
       };
       hideFirstUl();
 
@@ -159,9 +161,9 @@
                     */
 
       const paintItGreen = function () {
-        const ListItems = document.getElementsByTagName("ul");
-        for (let i = 0; i < ListItems.lenght; i++) {
-          ListItems[i].background.color = "green";
+        const listItems = document.getElementsByTagName("ul");
+        for (let i = 0; i < listItems.length; i++) {
+          listItems[i].style.backgroundColor = "green";
         }
       };
       paintItGreen();
